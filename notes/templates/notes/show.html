@@ -1,0 +1,17 @@
+{% extends "notes/base.html" %}
+
+{% block content %}
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ object.title }}</h5>
+            <p class="card-text">{{ object.description }}</p>
+        </div>
+        <div class="card-body card-footer">
+            {% if object.user == user %}
+                <a href="{% url 'notes.edit' object.id %}" class="text-warning">Edit</a>
+                <a href="{% url 'notes.delete' object.id %}" class="text-danger">Delete</a>
+            {% endif %}
+            <span class="text-muted">{{ object.created_at|timesince }} ago</span>
+        </div>
+    </div>
+{% endblock %}

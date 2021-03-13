@@ -1,0 +1,40 @@
+{% extends 'notes/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="card mt-3">
+        <div class="row g-0">
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <img class="img-fluid rounded border" src="{{ user.profile.image.url }}" alt="{{ user.username }}">
+            </div>
+            <div class="col-md-8">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <h1 class="card-title mt-0">{{ user.username }}</h1>
+                        <p class="card-text">{{ user.email }}</p>
+                        <p class="card-text"><small class="text-muted">Joined {{ user.date_joined|timesince }}
+                            ago</small>
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <fieldset class="form-group">
+
+                                {{ user_form|crispy }}
+
+                                {{ profile_form|crispy }}
+
+                            </fieldset>
+
+                            <div class="form-group mt-3">
+                                <input type="submit" class="btn btn-primary" value="Save">
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

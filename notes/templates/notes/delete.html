@@ -1,0 +1,18 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+    <div class="card mt-3">
+        <div class="card-body">
+            <h4 class="card-title">{{ object.title }}</h4>
+            <h5 class="card-subtitle">Are you sure you want to delete that note?</h5>
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="form-group mt-3">
+                    <input type="submit" class="btn btn-danger" value="Yes, Delete">
+                    <a href="{% url 'notes.show' object.id %}" class="btn btn-outline-primary">No, Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

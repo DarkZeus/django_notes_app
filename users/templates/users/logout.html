@@ -1,0 +1,14 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+    <div class="card mt-3">
+        <div class="card-body">
+            <h4 class="card-title">You have been logged out</h4>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">
+                <a href="{% url 'login' %}">Log in again</a>
+            </small>
+        </div>
+    </div>
+{% endblock %}
