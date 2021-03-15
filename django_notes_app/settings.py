@@ -25,9 +25,9 @@ SECRET_KEY = 'he+e17^b_n(u-q-w-@_-(@%e!7r-3!#2e*d7s@8qz7!_pz)+uy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get("DEBUG_VALUE") == 'True':
-    DEBUG = False
-else:
     DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = ['fuad-notes-app.herokuapp.com']
 
