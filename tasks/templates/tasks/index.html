@@ -60,13 +60,28 @@
                             </ul>
                         {% else %}
                             <p>Task is archived</p>
-                            <form style="d-none" id="tasks-delete-{{ task.id }}"
-                                  action="{% url 'tasks.delete' task.id %}" method="POST">
-                                {% csrf_token %}
-                            </form>
+                            <ul>
+                                <li>
+                                    <form style="d-none" id="tasks-recover-{{ task.id }}"
+                                          action="{% url 'tasks.recover' task.id %}" method="POST">
+                                        {% csrf_token %}
+                                    </form>
 
-                            <a onclick="event.preventDefault(); document.querySelector('#tasks-delete-{{ task.id }}').submit()"
-                               href="#" class="text-decoration-none">❌ <span class="text-danger">Delete</span></a>
+                                    <a onclick="event.preventDefault(); document.querySelector('#tasks-recover-{{ task.id }}').submit()"
+                                       href="#" class="text-decoration-none">🔁 <span
+                                            class="text-success">Recover</span></a>
+                                </li>
+                                <li>
+                                    <form style="d-none" id="tasks-delete-{{ task.id }}"
+                                          action="{% url 'tasks.delete' task.id %}" method="POST">
+                                        {% csrf_token %}
+                                    </form>
+
+                                    <a onclick="event.preventDefault(); document.querySelector('#tasks-delete-{{ task.id }}').submit()"
+                                       href="#" class="text-decoration-none">❌ <span
+                                            class="text-danger">Delete</span></a>
+                                </li>
+                            </ul>
                         {% endif %}
                     {% endif %}
                 </td>

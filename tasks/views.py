@@ -4,7 +4,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
-class Index(ListView):
+class Index(LoginRequiredMixin, ListView):
     template_name = 'tasks/index.html'
     context_object_name = 'tasks'
     paginate_by = 25
@@ -37,6 +37,23 @@ class Archive(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         if self.request.method == 'POST':
             form.instance.is_archived = True
+            return super().form_valid(form)
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.user:
+            return True
+
+        return False
+
+class Recover(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Task
+    fields = ['is_archived']
+
+    def form_valid(self, form):
+        if self.request.method == 'POST':
+            form.instance.is_archived = False
+            form.instance.is_done = False
             return super().form_valid(form)
 
     def test_func(self):
