@@ -24,10 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'he+e17^b_n(u-q-w-@_-(@%e!7r-3!#2e*d7s@8qz7!_pz)+uy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get("DEBUG_VALUE") == 'True':
-    DEBUG = True
-else:
-    DEBUG = False
+# if os.environ.get("DEBUG_VALUE") == 'True':
+#     DEBUG = True
+# else:
+#     DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['fuad-notes-app.herokuapp.com']
 
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'notes.apps.NotesConfig',
     'users.apps.UsersConfig',
+    'tasks.apps.TasksConfig',
     'crispy_forms',
 ]
 
@@ -114,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Europe/Kiev'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

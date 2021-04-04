@@ -1,7 +1,8 @@
 {% extends "notes/base.html" %}
 
 {% block content %}
-    <h2 class="mt-3">All notes <small>({{ page_obj.paginator.count }})</small></h2>
+    <h2 class="mt-3">All notes <small>({{ page_obj.paginator.count }})</small> <small><a
+            href="{% url 'notes.create' %}"><span class="badge bg-primary fs-6">Add new</span></a></small></h2>
     <div class="list-group list-group-flush">
         {% for note in notes %}
             <a href="{% url 'notes.show' note.id %}" class="list-group-item list-group-item-action" aria-current="true">
@@ -10,7 +11,6 @@
                     <small>{{ note.created_at }}</small>
                 </div>
                 {% if note.description %}<p class="mb-1">{{ note.description }}</p>{% endif %}
-                <small class="badge bg-primary">{{ note.user.username }}</small>
             </a>
         {% endfor %}
     </div>
