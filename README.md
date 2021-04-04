@@ -7,7 +7,8 @@ You can try demo at [Heroku](https://fuad-notes-app.herokuapp.com) (remember to 
 ## Features
 - Auth system with built-in implementation;
 - Creating notes which consist of title and description. Each note attached to it's author;
+- Creating tasks. Each task attached to it's author;
 - Admin section with managing notes and profiles directly.
 
 ## Todo
-- [ ] Add the ability to create todo lists
+- [x] ~~Add the ability to create todo lists~~ (Was added 05.04.2021)
